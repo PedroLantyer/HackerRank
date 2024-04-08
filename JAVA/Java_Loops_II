@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class JavaLoopsII {
+
+	public static void PrintArray(ArrayList<Integer> arr) 
+	{
+		String str = "";
+		for(int element : arr) 
+		{
+			str += element;
+			str += " ";
+		}
+		System.out.println(str.stripTrailing());
+	}
+	
+	public static ArrayList<Integer> GetSequence(int a, int b, int n)
+	{
+		ArrayList<Integer> sequence = new ArrayList<Integer>();
+		int value = a + b;
+		int potency = 1;
+		sequence.add(value);
+		
+		for(int i = 1; i < n; i++) 
+		{
+			potency *= 2;
+			value += (potency*b);
+			sequence.add(value);
+		}
+		
+		return sequence;
+	}
+	
+	public static void main(String[] args) 
+	{
+		int a, b, n, queries;
+		
+		ArrayList<Integer> results = new ArrayList<Integer>();
+		Scanner input = new Scanner(System.in);
+		queries = input.nextInt();
+		
+		
+		for(int i = 0; i < queries; i++) 
+		{
+			a = input.nextInt();
+			b = input.nextInt();
+			n = input.nextInt();
+			
+			
+			results = GetSequence(a,b,n);
+			PrintArray(results);
+		}
+		
+		input.close();
+	}
+
+}
